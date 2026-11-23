@@ -1,2 +1,19 @@
-<h1>Success</h1>
-<p>Your message was sent successfully.</p>
+{% extends "base.html" %}
+
+{% block title %}Success{% endblock %}
+
+{% block content %}
+<script>
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    'event': 'generate_lead',
+    'form_id': 'contact_form',
+    'form_location': 'sidebar'
+  });
+</script>
+
+<div class="w3-container w3-padding">
+  <h1>Success</h1>
+  <p>Your message was sent successfully.</p>
+</div>
+{% endblock %}

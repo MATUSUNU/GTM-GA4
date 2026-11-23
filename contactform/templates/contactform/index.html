@@ -1,64 +1,35 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
 
-<html>
-<title>Test GTM/GA4 Fashion Blog Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/6/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+{% block extra_head %}
 <style>
-h1,h2,h3,h4,h5,h6 {font-family:"Oswald",sans-serif}
-body {font-family:"Open Sans",sans-serif}
+  h1,h2,h3,h4,h5,h6 {font-family:"Oswald",sans-serif}
+  body {font-family:"Open Sans",sans-serif}
 
-.blog-grid {
-  display:grid;
-  grid-template-columns:1fr;
-}
-
-@media (min-width:993px) {
   .blog-grid {
-    grid-template-columns:2fr 1fr;
+    display:grid;
+    grid-template-columns:1fr;
   }
-}
+
+  @media (min-width:993px) {
+    .blog-grid {
+      grid-template-columns:2fr 1fr;
+    }
+  }
 </style>
+{% endblock %}
 
-<body class="w3-light-grey">
-
+{% block content %}
 <!-- Social Navigation -->
 
 <nav class="w3-flex w3-black w3-hide-small">
-
-<a href="#" class="w3-button">
-<i class="fa fa-facebook-official"></i>
-</a>
-
-<a href="#" class="w3-button">
-<i class="fa fa-instagram"></i>
-</a>
-
-<a href="#" class="w3-button">
-<i class="fa fa-snapchat"></i>
-</a>
-
-<a href="#" class="w3-button">
-<i class="fa fa-flickr"></i>
-</a>
-
-<a href="#" class="w3-button">
-<i class="fa fa-twitter"></i>
-</a>
-
-<a href="#" class="w3-button">
-<i class="fa fa-linkedin"></i>
-</a>
-
-<a href="#" class="w3-button"
-style="margin-left:auto"> <i class="fa fa-search"></i> </a>
-
+  <a href="#" class="w3-button"><i class="fa fa-facebook-official"></i></a>
+  <a href="#" class="w3-button"><i class="fa fa-instagram"></i></a>
+  <a href="#" class="w3-button"><i class="fa fa-snapchat"></i></a>
+  <a href="#" class="w3-button"><i class="fa fa-flickr"></i></a>
+  <a href="#" class="w3-button"><i class="fa fa-twitter"></i></a>
+  <a href="#" class="w3-button"><i class="fa fa-linkedin"></i></a>
+  <a href="#" class="w3-button" style="margin-left:auto"> <i class="fa fa-search"></i></a>
 </nav>
 
 <!-- Page Content -->
@@ -718,11 +689,11 @@ target="_blank">GTM/GA4</a>
 
 <script>
 // Toggle replies
-document.getElementById("myBtn").click();
+var myBtn = document.getElementById("myBtn");
+if (myBtn) myBtn.click();
 
 function myFunction(id) {
   var x = document.getElementById(id);
-
   if (x.className.indexOf("w3-show") == -1) {
     x.className += " w3-show";
   } else {
@@ -730,12 +701,9 @@ function myFunction(id) {
   }
 }
 
-// Like button
 function likeFunction(x) {
   x.style.fontWeight = "bold";
   x.innerHTML = "✓ Liked";
 }
 </script>
-
-</body>
-</html>
+{% endblock %}

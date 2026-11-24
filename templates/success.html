@@ -3,14 +3,17 @@
 {% block title %}Success{% endblock %}
 
 {% block content %}
+
+{% if just_submitted %}
 <script>
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     'event': 'generate_lead',
     'form_id': 'contact_form',
-    'form_location': 'sidebar'
+    'form_location': '{{ form_location }}'
   });
 </script>
+{% endif %}
 
 <div class="w3-container w3-padding">
   <h1>Success</h1>

@@ -5,8 +5,11 @@
 {% block content %}
 <div class="w3-container w3-padding">
   <h1>Contact Us</h1>
-  <form method="post" id="contact_form" data-form-location="contact-page">
+  <form method="post" action="{% url 'contact' %}" id="contact_form_contact_page">
     {% csrf_token %}
+    <!-- Hidden field to tell the backend where this form came from -->
+    <input type="hidden" name="form_location" value="contact-page">
+
     {{ form }}
     <div class="form-actions">
       <button type="submit">Send</button>

@@ -15,13 +15,6 @@ def index(request):
 class SuccessView(TemplateView):
     template_name = "success.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # Read and immediately remove the session flags
-        context['just_submitted'] = self.request.session.pop('just_submitted', False)
-        context['form_location'] = self.request.session.pop('form_location', 'unknown')
-        return context
-
 
 class ContactView(FormView):
     form_class = ContactForm
@@ -44,13 +37,6 @@ class ContactView(FormView):
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[settings.NOTIFY_EMAIL],
         )
-
-        # 1. Determine which form was submitted
-        form_location = self.request.POST.get('form_location', 'unknown')
-
-        # 2. Set session flags for the success page to read
-        self.request.session['just_submitted'] = True
-        self.request.session['form_location'] = form_location
 
         # 3. Redirect to the success URL (PRG pattern)
         return super().form_valid(form)

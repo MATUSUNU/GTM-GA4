@@ -4,16 +4,19 @@
 
 {% block content %}
 
-{% if just_submitted %}
 <script>
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    'event': 'generate_lead',
-    'form_id': 'contact_form',
-    'form_location': '{{ form_location }}'
-  });
+  // Check if we already fired the lead event in this browser session
+  if (!sessionStorage.getItem('lead_fired')) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'generate_lead',
+      'form_id': 'contact_form',
+      'form_location': 'sidebar' // (Or use a generic value)
+    });
+    // Set the flag so it never fires again on refresh
+    sessionStorage.setItem('lead_fired', 'true');
+  }
 </script>
-{% endif %}
 
 <div class="w3-container w3-padding">
   <h1>Success</h1>
